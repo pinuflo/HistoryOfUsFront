@@ -30,7 +30,7 @@ export class UserService {
     let trimmedEmail = email.trim();
 
     console.log("..Registrando paso1");
-    return this.http.post<any>(`${environment.backend_url}/auth/registration`, { 'username': username, 'password': password, 'name': name, 'email': trimmedEmail })
+    return this.http.post<any>(`${environment.backend_url}/api/registration/`, { 'username': username, 'password': password, 'name': name, 'email': trimmedEmail })
         .pipe(map(serverResponse => 
             {
               console.log("..Registrando paso2");
