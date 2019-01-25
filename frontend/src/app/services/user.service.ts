@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { first, map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,13 @@ export class UserService {
       {
           return null;
       }
+  }
+  
+
+  getCurrentUser() : Observable<any>
+  {
+      return this.http.get<any>(`${environment.backend_url}/api/users/me/`);
+    
   }
 
   register(username: string, password: string, name: string, email: string) {
@@ -62,7 +70,7 @@ export class UserService {
 
   login(username: string, password: string) {
 
-    return this.http.post<any>(`${environment.backend_url}/api-token-auth`, { username, password })
+    return this.http.post<any>(`${environment.backend_url}/api-token-auth/`, { username, password })
         .pipe(map(serverResponse => 
             {
                 if(serverResponse.success == true)

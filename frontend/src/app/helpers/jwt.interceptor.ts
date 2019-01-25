@@ -7,12 +7,13 @@ import { environment } from 'src/environments/environment';
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        const currentUserAuth = JSON.parse(localStorage.getItem(environment.env_key +'currentUserToken'));
+        let currentUserToken = JSON.parse(localStorage.getItem(environment.env_key + 'currentUserToken'));
+        console.log(currentUserToken);
 
-        if (currentUserAuth) {
+        if (currentUserToken) {
             request = request.clone({
                 setHeaders: { 
-                    'Authorization': `bearer ${currentUserAuth.token}`
+                    'Authorization': `bearer ${currentUserToken}`
                 }
             });
         }
