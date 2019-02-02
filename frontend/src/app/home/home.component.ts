@@ -17,22 +17,30 @@ export class HomeComponent {
 
   ngOnInit() {
 
-    this.userService.getCurrentUser().subscribe(
-      (successData) =>
-      {
-          console.log(successData);
-          if(successData){
-            this.loggedIn = true;
+    
+    if(this.userService.getCurrentUserToken() )
+    {
+
+        this.userService.getCurrentUser().subscribe(
+          (successData) =>
+          {
+              console.log(successData);
+              if(successData){
+                this.loggedIn = true;
+              }
+              
+              
+          },
+          (errorData) =>
+          {
+            console.log(errorData);
           }
-          
-          
-      },
-      (errorData) =>
-      {
-        console.log(errorData);
-      }
-        
-    );
+            
+        );
+
+    }
+
+
 
   
   }

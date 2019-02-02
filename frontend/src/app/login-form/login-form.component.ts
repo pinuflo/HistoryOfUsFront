@@ -36,9 +36,19 @@ export class LoginFormComponent {
     if(this.addressForm.valid)
     {
         this.userService.login(this.addressForm.value.username,this.addressForm.value.password).subscribe(
-            (success) =>
+            (data) =>
             {
-                this.router.navigate(['/']);
+
+              if(data.status == "true")
+              {
+                  this.router.navigate(['/']);
+              }
+              else
+              {
+                
+              }
+
+              
             },
             (error) =>
             {

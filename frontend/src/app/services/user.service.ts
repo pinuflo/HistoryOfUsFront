@@ -70,16 +70,16 @@ export class UserService {
 
   login(username: string, password: string) {
 
-    return this.http.post<any>(`${environment.backend_url}/api-token-auth/`, { username, password })
+    return this.http.post<any>(`${environment.backend_url}/login/`, { username, password })
         .pipe(map(serverResponse => 
             {
-                if(serverResponse.success == true)
+
+                if(serverResponse.status == "true")
                 {
-                    console.log(serverResponse);
                     let data = serverResponse.data;
                     if (data && data.token) 
                     {
-                        localStorage.setItem(environment.env_key + 'currentUserToken', JSON.stringify(data));
+                        localStorage.setItem(environment.env_key + 'currentUserToken', JSON.stringify(data.token));
                     }
                     return serverResponse;
                 }
@@ -91,7 +91,8 @@ export class UserService {
         );
   }
 
-  logout() {
+  logout() 
+  {
     localStorage.removeItem(environment.env_key + 'currentUserToken');
   }
 

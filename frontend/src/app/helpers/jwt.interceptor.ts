@@ -13,10 +13,11 @@ export class JwtInterceptor implements HttpInterceptor {
         if (currentUserToken) {
             request = request.clone({
                 setHeaders: { 
-                    'Authorization': `bearer ${currentUserToken}`
+                    'Authorization': `Bearer ${currentUserToken}`
                 }
             });
         }
+        console.log(request);
 
         return next.handle(request);
     }
