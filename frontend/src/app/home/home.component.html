@@ -19,14 +19,16 @@
         </mat-card-header>
         <mat-card-content class="dashboard-card-content">
           <div>
-
-
-              ¡¡¡El home funciona !!!
-
-              <br>
-              <div  *ngIf="!loggedIn"  >  Link para registrar usuario:  <a href="/register">[Acá]</a> </div>            
-
-
+            <div *ngIf='loggedIn'>
+                <ul>
+                    <li *ngFor="let stage of stages">
+                      {{stage.nombre}}
+                    </li>
+                  </ul>
+            </div>
+              
+            <br>
+            <div  *ngIf="!loggedIn"  >  Link para registrar usuario:  <a href="/register">[Acá]</a> </div>            
           </div>
 
 
