@@ -20,6 +20,7 @@
         <mat-card-content class="dashboard-card-content">
           <div>
             <div *ngIf='loggedIn'>
+                <h2>Escenarios disponibles para comenzar tu historia.</h2>
                 <ul>
                     <li *ngFor="let stage of stages">
                       {{stage.nombre}}
