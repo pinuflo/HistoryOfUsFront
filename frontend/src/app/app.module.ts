@@ -15,6 +15,7 @@ import { RegisterFormComponent } from './register-form/register-form.component';
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './helpers/jwt.interceptor';
+import { StageComponent } from './stage/stage.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { JwtInterceptor } from './helpers/jwt.interceptor';
     LoginFormComponent,
     HomeComponent,
     RegisterFormComponent,
+    StageComponent,
   ],
   imports: [
     BrowserModule,
